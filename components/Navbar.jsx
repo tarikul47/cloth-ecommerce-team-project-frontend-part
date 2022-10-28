@@ -83,6 +83,16 @@ const Navbar = () => {
                 name="KIDS"
                 design="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
               />
+              <MenuItem
+                name="CART"
+                url="/cart"
+                design="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
+              />
+              <MenuItem
+                name="CHECKOUT"
+                url="/checkout"
+                design="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
+              />
             </div>
             <div className="relative mt-4 md:mt-0 flex">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
