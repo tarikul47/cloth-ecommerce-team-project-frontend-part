@@ -1,6 +1,7 @@
 import Layout from "../../components/Layout";
 import Product from "../../components/Product";
 import Attribute from "../../components/UI/Attribute";
+import Button from "../../components/UI/Button";
 import Image from "../../components/UI/Image";
 
 const ProductSlug = () => {
@@ -122,75 +123,10 @@ const ProductSlug = () => {
                   <div class="flow-root">
                     <div class="-m-0.5 flex flex-wrap">
                       <Attribute attr="size" name="XS" />
-                      <Attribute attr="size" name="XS" />
-                      <Attribute attr="size" name="XS" />
-                      <Attribute attr="size" name="XS" />
-
-                      <label for="size_xs" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="size_xs"
-                          class="peer sr-only"
-                        />
-
-                        <span class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white">
-                          XS
-                        </span>
-                      </label>
-
-                      <label for="size_s" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="size_s"
-                          class="peer sr-only"
-                        />
-
-                        <span class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white">
-                          S
-                        </span>
-                      </label>
-
-                      <label for="size_m" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="size_m"
-                          class="peer sr-only"
-                        />
-
-                        <span class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white">
-                          M
-                        </span>
-                      </label>
-
-                      <label for="size_l" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="size_l"
-                          class="peer sr-only"
-                        />
-
-                        <span class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white">
-                          L
-                        </span>
-                      </label>
-
-                      <label for="size_xl" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="size_xl"
-                          class="peer sr-only"
-                        />
-
-                        <span class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white">
-                          XL
-                        </span>
-                      </label>
-
+                      <Attribute attr="size" name="S" />
+                      <Attribute attr="size" name="M" />
+                      <Attribute attr="size" name="L" />
+                      <Attribute attr="size" name="XL" />
                       <button
                         type="submit"
                         class="ml-3 block border border-gray-900 rounded bg-white px-3 py-2 text-xs font-medium text-black hover:bg-slate-300"
@@ -230,12 +166,7 @@ const ProductSlug = () => {
                 </div>
 
                 <div class="mt-8 flex">
-                  <button
-                    type="button"
-                    class="mt-4 mr-2 flex w-full items-center justify-center rounded-sm bg-black text-white px-8 py-4"
-                  >
-                    <span class="text-sm font-medium"> Add to Bag </span>
-
+                  <Button bgColor="black" label="Add to Bag">
                     <svg
                       class="ml-1.5 h-5 w-5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -250,13 +181,8 @@ const ProductSlug = () => {
                         d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                       />
                     </svg>
-                  </button>
-                  <button
-                    type="button"
-                    class="mt-4 ml-2 flex w-full items-center justify-center rounded-sm bg-white text-black border border-gray-900 px-8 py-4"
-                  >
-                    <span class="text-sm font-medium"> Go Back </span>
-                  </button>
+                  </Button>
+                  <Button bgColor="white" label="Go Back" />
                 </div>
               </form>
 
