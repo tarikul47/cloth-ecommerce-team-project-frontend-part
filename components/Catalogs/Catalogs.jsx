@@ -2,9 +2,9 @@ import Catalog from "./Catalog";
 
 const Catalogs = () => {
   return (
-    <section class="container max-w-screen-xl my-10">
-      <div class="flex flex-wrap gap-2">
-        <div class="flex md:flex-row sm: flex-col">
+    <section className="container max-w-screen-xl my-10">
+      <div className="flex flex-wrap gap-2">
+        <div className="flex md:flex-row sm: flex-col">
           <Catalog
             name="Men"
             url="/catalogs/men"

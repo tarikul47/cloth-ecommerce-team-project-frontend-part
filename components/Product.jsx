@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Product = ({ product }) => {
   return (
     <div class="border border-slate-100 shadow-lg">
@@ -24,7 +26,9 @@ const Product = ({ product }) => {
         type="button"
         class="w-full items-center justify-center bg-black text-white px-8 py-3 mt-3"
       >
-        <span class="text-sm font-medium px-2"> View Details </span>
+        <Link href="/product/shirt">
+          <span class="text-sm font-medium px-2"> View Details </span>
+        </Link>
       </button>
     </div>
   );
