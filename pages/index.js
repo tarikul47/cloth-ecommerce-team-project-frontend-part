@@ -3,8 +3,15 @@ import Catalogs from "../components/Catalogs/Catalogs";
 import Messages from "../components/Messages/Messages";
 import Promotionals from "../components/Promotionals/Promotionals";
 import CatagoryDisplays from "../components/CatagoryDisplays/CatagoryDisplays";
+import {
+  getCatalogs,
+  useGetCatalogsQuery,
+} from "../features/catalogs/catalogs";
 
 export default function Home() {
+  // catalogs collection
+  const { data } = useGetCatalogsQuery();
+  console.log(data);
   const promotionals = [
     {
       name: " Grab the season",
@@ -27,3 +34,14 @@ export default function Home() {
     </Layout>
   );
 }
+
+// catalogs collection on server side
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (contex) => {
+    await store.dispatch(getCatalogs.initiate());
+    //await Promise.all(getRunningOperationPromise());
+    return {
+      props: {},
+    };
+  }
+);

@@ -2,8 +2,15 @@ import React from "react";
 import CatagoryDisplays from "../../components/CatagoryDisplays/CatagoryDisplays";
 import Layout from "../../components/Layout";
 import Promotionals from "../../components/Promotionals/Promotionals";
+import {
+  getCatalogs,
+  useGetCatalogsQuery,
+} from "../../features/catalogs/catalogs";
 
 const CatalogSlug = () => {
+  // catalogs collection
+  const { data } = useGetCatalogsQuery();
+  console.log(data);
   const promotionals = [
     {
       name: " Grab the season",
@@ -27,3 +34,4 @@ const CatalogSlug = () => {
 };
 
 export default CatalogSlug;
+
