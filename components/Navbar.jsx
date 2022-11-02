@@ -1,103 +1,83 @@
+import Link from "next/link";
+import { useState } from "react";
+import { menuItems, subMenuItems } from "../public/menuData";
 import Input from "./UI/Input";
 import MenuItem from "./UI/MenuItem";
-import { useRouter } from "next/router";
 
 const Navbar = () => {
-  const router = useRouter();
-  console.log(router.route);
+  const [navbar, setNavbar] = useState(false);
+  const showNavbar = () => {
+    setNavbar(!navbar);
+  };
+  const show = navbar ? "block" : "hidden";
+
   return (
     <section>
       <nav x-data="{ isOpen: false }" className="relative bg-black">
         <div className="container px-6 py-3 mx-auto md:flex">
           <div className="flex items-center justify-between">
             <div>
-              <a
-                className="text-2xl font-bold text-white transition-colors duration-300 transform lg:text-3xl"
-                href="/"
-              >
-                URBANSTYLE
-              </a>
+              <Link href="/">
+                <a className="text-2xl font-bold text-white transition-colors duration-300 transform lg:text-3xl">
+                  URBANSTYLE
+                </a>
+              </Link>
             </div>
 
             {/* Mobile menu button */}
             <div className="flex lg:hidden">
               <button
+                onClick={showNavbar}
                 x-cloak="true"
                 type="button"
                 className="text-gray-500 hover:text-gray-600  focus:outline-none focus:text-gray-600"
                 aria-label="toggle menu"
               >
-                <svg
-                  x-show="!isOpen"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 8h16M4 16h16"
-                  />
-                </svg>
-
-                <svg
-                  x-show="isOpen"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                {navbar ? (
+                  <svg
+                    x-show="isOpen"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    x-show="!isOpen"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4 8h16M4 16h16"
+                    />
+                  </svg>
+                )}
               </button>
             </div>
           </div>
           {/* Mobile Menu open: "block", Menu closed: "hidden" */}
           <div
             x-cloak="true"
-            className="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-black md:mt-0 md:p-0 md:top-0 md:relative md:opacity-100 md:translate-x-0 md:flex md:items-center md:justify-between"
+            className={`${show} absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-black md:mt-0 md:p-0 md:top-0 md:relative md:opacity-100 md:translate-x-0 md:flex md:items-center md:justify-between`}
           >
             <div className="flex flex-col px-2 -mx-4 md:flex-row md:mx-10 md:py-0">
-              <MenuItem
-                name="HOME"
-                design="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              />
-              <MenuItem
-                name="MEN"
-                design="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              />
-              <MenuItem
-                name="WOMEN"
-                design="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              />
-              <MenuItem
-                name="KIDS"
-                design="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              />
-              <MenuItem
-                name="CART"
-                url="/cart"
-                design="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              />
-              <MenuItem
-                name="CHECKOUT"
-                url="/checkout"
-                design="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              />
-              <MenuItem
-                name="THANKYOU"
-                url="/thankyou"
-                design="py-2 border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              />
+              {menuItems.map((item) => (
+                <MenuItem key={item.id} name={item.name} url={item.url} />
+              ))}
             </div>
             <div className="relative mt-4 md:mt-0 flex">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -137,42 +117,15 @@ const Navbar = () => {
           </div>
         </div>
         <div class="container">
-          <div class="py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
-            <MenuItem
-              name="NEW IN"
-              design="py-2 text-sm border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              url="/category/pants"
-            />
-            <MenuItem
-              name="PANJABI"
-              design="py-2 text-sm border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              url="/category/pants"
-            />
-            <MenuItem
-              name="NEW IN"
-              design="py-2 text-sm border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              url="/category/pants"
-            />
-            <MenuItem
-              name="PANTS"
-              design="py-2 text-sm border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              url="/category/pants"
-            />
-            <MenuItem
-              name="JACKETS"
-              design="py-2 text-sm border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              url="/category/pants"
-            />
-            <MenuItem
-              name="SHIRTS"
-              design="py-2 text-sm border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              url="/category/pants"
-            />
-            <MenuItem
-              name=" SPORTSWEAR"
-              design="py-2 text-sm border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"
-              url="/category/pants"
-            />
+          <div class="flex justify-around py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
+            {subMenuItems.map((item) => (
+              <MenuItem
+                key={item.id}
+                name={item.name}
+                url={item.url}
+                textSm="text-sm"
+              />
+            ))}
           </div>
         </div>
       </nav>
