@@ -8,9 +8,9 @@ const CatagoryDisplays = ({ data, title }) => {
       : "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80";
   return (
     <section>
-      <div class="container max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="container max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
         <SectionTitle title={title} />
-        <div class="grid sm:grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:items-stretch">
+        <div className="grid sm:grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:items-stretch">
           <CatagoryDisplay name="Simple Watch" image={image} url="#" />
           <CatagoryDisplay name="Simple Watch" image={image} url="#" />
           <CatagoryDisplay name="Simple Watch" image={image} url="#" />

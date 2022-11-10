@@ -136,8 +136,8 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div class="container">
-          <div class="py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
+        <div className="container">
+          <div className="py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
             <MenuItem
               name="NEW IN"
               design="py-2 text-sm border-b-2 border-transparent text-white hover:text-white transition-colors duration-300 transform hover:border-white sm:mx-6"

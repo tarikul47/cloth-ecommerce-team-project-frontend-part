@@ -6,15 +6,15 @@ const Attribute = ({ attr, name }) => {
   return (
     <label
       for={`color_${name}`}
-      class={`cursor-pointer ${attr == "size" && "p-0.5"}`}
+      className={`cursor-pointer ${attr == "size" && "p-0.5"}`}
     >
       <input
         type="radio"
         id={`color_${name}`}
         name="color"
-        class="peer sr-only"
+        className="peer sr-only"
       />
-      <span style={{ backgroundColor: name }} class={classname}>
+      <span style={{ backgroundColor: name }} className={classname}>
         {attr == "size" && name}
       </span>
     </label>

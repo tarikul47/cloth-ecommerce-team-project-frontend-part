@@ -60,18 +60,18 @@ const Categoryslug = () => {
   return (
     <Layout>
       <section>
-        <div class="container min-w-screen py-12">
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-start">
-            <div class="lg:sticky lg:top-4">
+        <div className="container min-w-screen py-12">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-start">
+            <div className="lg:sticky lg:top-4">
               <details
                 open
-                class="overflow-hidden rounded border border-gray-200"
+                className="overflow-hidden rounded border border-gray-200"
               >
-                <summary class="flex items-center justify-between bg-gray-100 px-5 py-3 lg:hidden">
-                  <span class="text-sm font-medium"> Toggle Filters </span>
+                <summary className="flex items-center justify-between bg-gray-100 px-5 py-3 lg:hidden">
+                  <span className="text-sm font-medium"> Toggle Filters </span>
 
                   <svg
-                    class="h-5 w-5"
+                    className="h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -86,16 +86,16 @@ const Categoryslug = () => {
                   </svg>
                 </summary>
 
-                <form class="border-t border-gray-200 lg:border-t-0">
+                <form className="border-t border-gray-200 lg:border-t-0">
                   <Filter label="Categories" data={categories} />
                   <Filter label="Sizes" data={size} />
                   <Filter label="Colors" data={color} />
 
-                  <div class="flex justify-between border-t border-gray-200 px-5 py-3">
+                  <div className="flex justify-between border-t border-gray-200 px-5 py-3">
                     <button
                       name="reset"
                       type="button"
-                      class="rounded text-xs font-medium text-gray-600 underline"
+                      className="rounded text-xs font-medium text-gray-600 underline"
                     >
                       Reset All
                     </button>
@@ -103,7 +103,7 @@ const Categoryslug = () => {
                     <button
                       name="commit"
                       type="button"
-                      class="rounded bg-black px-5 py-3 text-xs font-medium text-white"
+                      className="rounded bg-black px-5 py-3 text-xs font-medium text-white"
                     >
                       Apply Filters
                     </button>
@@ -112,21 +112,21 @@ const Categoryslug = () => {
               </details>
             </div>
 
-            <div class="lg:col-span-3">
-              <div class="flex items-center justify-between">
-                <p class="text-sm text-gray-500">
-                  <span class="hidden sm:inline"> Showing </span>6 of 24
+            <div className="lg:col-span-3">
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-gray-500">
+                  <span className="hidden sm:inline"> Showing </span>6 of 24
                   Products
                 </p>
 
-                <div class="ml-4">
-                  <label for="SortBy" class="sr-only">
+                <div className="ml-4">
+                  <label for="SortBy" className="sr-only">
                     Sort
                   </label>
                   <select
                     id="SortBy"
                     name="sort_by"
-                    class="rounded border-gray-100 text-sm"
+                    className="rounded border-gray-100 text-sm"
                   >
                     <option readonly>Sort</option>
                     <option value="price-asc">Price, Low-High</option>
@@ -135,7 +135,7 @@ const Categoryslug = () => {
                 </div>
               </div>
 
-              <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {products.map((product) => (
                   <Product product={product} />
                 ))}

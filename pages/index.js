@@ -13,7 +13,12 @@ import { wrapper } from "../app/store";
 export default function Home({ data: catalogs, isLoading, isError, error }) {
   // catalogs collection
   //const { data } = useGetCatalogsQuery();
-  console.log("props", catalogs, isLoading, isError, error);
+  //console.log("props", catalogs, isLoading, isError, error);
+
+  console.log("catalogs", catalogs);
+  console.log("isLoading", isLoading);
+  console.log("isError", isError);
+  console.log("error", error);
 
   // decide what to render
   let contentCatalogs = null;
@@ -63,15 +68,15 @@ export const getServerSideProps = wrapper.getServerSideProps(
     const { data, isError, isLoading, error } = await store.dispatch(
       getCatalogs.initiate()
     );
-    console.log("server data", typeof data);
+    console.log("server data - ", typeof error);
     //await Promise.all(getRunningOperationPromise());
 
     return {
       props: {
-        data,
+        ...(data && data),
         isLoading,
         isError,
-        ...(error && error),
+        error,
       },
     };
   }

@@ -39,12 +39,12 @@ const ProductSlug = () => {
   return (
     <Layout>
       <section>
-        <div class="relative container min-w-screen px-4 py-8">
-          <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
+        <div className="relative container min-w-screen px-4 py-8">
+          <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
               <Image src="https://images.unsplash.com/photo-1521498542256-5aeb47ba2b36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
 
-              <div class="grid grid-cols-2 gap-4 lg:mt-4">
+              <div className="grid grid-cols-2 gap-4 lg:mt-4">
                 <Image src="https://images.unsplash.com/photo-1521498542256-5aeb47ba2b36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
                 <Image src="https://images.unsplash.com/photo-1521498542256-5aeb47ba2b36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
                 <Image src="https://images.unsplash.com/photo-1521498542256-5aeb47ba2b36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
@@ -52,27 +52,27 @@ const ProductSlug = () => {
               </div>
             </div>
 
-            <div class="sticky top-0">
-              <strong class="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600">
+            <div className="sticky top-0">
+              <strong className="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600">
                 catagory name
               </strong>
 
-              <div class="mt-8 flex justify-between">
-                <div class="max-w-[35ch]">
-                  <h1 class="text-2xl font-bold font-roboto">
+              <div className="mt-8 flex justify-between">
+                <div className="max-w-[35ch]">
+                  <h1 className="text-2xl font-bold font-roboto">
                     Mens Casual Shirt
                   </h1>
 
-                  <p class="mt-0.5 text-sm text-slate-400">SKU-2638</p>
+                  <p className="mt-0.5 text-sm text-slate-400">SKU-2638</p>
                 </div>
 
-                <p class="text-lg font-bold text-green-600">BDT 1500</p>
+                <p className="text-lg font-bold text-green-600">BDT 1500</p>
               </div>
 
-              <details class="group relative mt-4">
-                <summary class="block">
+              <details className="group relative mt-4">
+                <summary className="block">
                   <div>
-                    <div class="prose max-w-none group-open:hidden">
+                    <div className="prose max-w-none group-open:hidden">
                       <h4>Product details:</h4>
                       <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -82,13 +82,13 @@ const ProductSlug = () => {
                       </p>
                     </div>
 
-                    <span class="mt-4 cursor-pointer text-sm font-medium underline group-open:absolute group-open:bottom-0 group-open:left-0 group-open:mt-0">
+                    <span className="mt-4 cursor-pointer text-sm font-medium underline group-open:absolute group-open:bottom-0 group-open:left-0 group-open:mt-0">
                       Read More
                     </span>
                   </div>
                 </summary>
 
-                <div class="prose max-w-none pb-6">
+                <div className="prose max-w-none pb-6">
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Ipsa veniam dicta beatae eos ex error culpa delectus rem
@@ -105,11 +105,11 @@ const ProductSlug = () => {
                 </div>
               </details>
 
-              <form class="mt-8">
+              <form className="mt-8">
                 <fieldset>
-                  <legend class="mb-1 text-sm font-medium">Color</legend>
+                  <legend className="mb-1 text-sm font-medium">Color</legend>
 
-                  <div class="mt-2 flex gap-1">
+                  <div className="mt-2 flex gap-1">
                     <Attribute attr="color" name="green" />
                     <Attribute name="blue" />
                     <Attribute name="pink" />
@@ -118,11 +118,11 @@ const ProductSlug = () => {
                   </div>
                 </fieldset>
 
-                <fieldset class="mt-4">
-                  <legend class="mb-1 text-sm font-medium">Size</legend>
+                <fieldset className="mt-4">
+                  <legend className="mb-1 text-sm font-medium">Size</legend>
 
-                  <div class="flow-root">
-                    <div class="-m-0.5 flex flex-wrap">
+                  <div className="flow-root">
+                    <div className="-m-0.5 flex flex-wrap">
                       <Attribute attr="size" name="XS" />
                       <Attribute attr="size" name="S" />
                       <Attribute attr="size" name="M" />
@@ -130,7 +130,7 @@ const ProductSlug = () => {
                       <Attribute attr="size" name="XL" />
                       <button
                         type="submit"
-                        class="ml-3 block border border-gray-900 rounded bg-white px-3 py-2 text-xs font-medium text-black hover:bg-slate-300"
+                        className="ml-3 block border border-gray-900 rounded bg-white px-3 py-2 text-xs font-medium text-black hover:bg-slate-300"
                       >
                         Size Guide
                       </button>
@@ -138,15 +138,15 @@ const ProductSlug = () => {
                   </div>
                 </fieldset>
 
-                <div class="mt-4">
-                  <legend class="mb-1 text-sm font-medium">Quantity</legend>
+                <div className="mt-4">
+                  <legend className="mb-1 text-sm font-medium">Quantity</legend>
                   <Quantity />
                 </div>
 
-                <div class="mt-8 flex">
+                <div className="mt-8 flex">
                   <Button bgColor="black" label="Add to Bag">
                     <svg
-                      class="ml-1.5 h-5 w-5"
+                      className="ml-1.5 h-5 w-5"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -164,21 +164,21 @@ const ProductSlug = () => {
                 </div>
               </form>
 
-              <div class="my-8">
-                <h4 class="mb-1 text-sm font-medium">Returns:</h4>
-                <p class="text-sm mt-2">
-                  <span class="block">
+              <div className="my-8">
+                <h4 className="mb-1 text-sm font-medium">Returns:</h4>
+                <p className="text-sm mt-2">
+                  <span className="block">
                     *Returns are free within 7 days unless used.{" "}
                   </span>
 
-                  <a href="" class="mt-1 inline-block underline text-blue-400">
+                  <a href="" className="mt-1 inline-block underline text-blue-400">
                     Find out more about our return policy
                   </a>
                 </p>
 
-                <h4 class="mb-1 text-sm font-medium mt-4">Delivery:</h4>
-                <p class="text-sm mt-1">
-                  <span class="block text-blue-400">
+                <h4 className="mb-1 text-sm font-medium mt-4">Delivery:</h4>
+                <p className="text-sm mt-1">
+                  <span className="block text-blue-400">
                     {" "}
                     2 to 3 days at metropolitan city{" "}
                   </span>
@@ -189,17 +189,17 @@ const ProductSlug = () => {
         </div>
       </section>
 
-      <hr class="container h-px my-10 bg-gray-300" />
+      <hr className="container h-px my-10 bg-gray-300" />
 
       <section>
-        <div class="container min-w-screen px-4 py-8">
-          <div class="mb-8 flex sm:flex-row justify-between">
-            <h2 class="text-2xl font-roboto font-semibold">
+        <div className="container min-w-screen px-4 py-8">
+          <div className="mb-8 flex sm:flex-row justify-between">
+            <h2 className="text-2xl font-roboto font-semibold">
               Other items in This catagory
             </h2>
           </div>
 
-          <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-4">
             {products.map((product) => (
               <Product product={product} />
             ))}

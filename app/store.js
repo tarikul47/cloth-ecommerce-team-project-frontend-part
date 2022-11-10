@@ -13,7 +13,7 @@ const makeStore = () =>
   });
 
 export const wrapper = createWrapper(makeStore, {
-  debug: true,
+  debug: false,
   //serializeState: (state) => state.toJS(),
   //deserializeState: (state) => fromJS(state),
 });

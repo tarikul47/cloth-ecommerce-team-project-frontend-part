@@ -15,9 +15,9 @@ const Button = ({ label, children, bgColor }) => {
   return (
     <button
       type="button"
-      class={`mt-4 mr-2 flex w-full items-center justify-center rounded-sm ${backgroundColor} text-white px-8 py-4`}
+      className={`mt-4 mr-2 flex w-full items-center justify-center rounded-sm ${backgroundColor} text-white px-8 py-4`}
     >
-      <span class="text-sm font-medium"> {label} </span>
+      <span className="text-sm font-medium"> {label} </span>
 
       {children && children}
     </button>
