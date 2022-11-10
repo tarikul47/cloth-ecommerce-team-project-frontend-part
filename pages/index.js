@@ -7,11 +7,33 @@ import {
   getCatalogs,
   useGetCatalogsQuery,
 } from "../features/catalogs/catalogs";
+import { getProductList } from "../features/api/apiSlice";
+import { wrapper } from "../app/store";
 
-export default function Home() {
+export default function Home({ data: catalogs, isLoading, isError, error }) {
   // catalogs collection
-  const { data } = useGetCatalogsQuery();
-  console.log(data);
+  //const { data } = useGetCatalogsQuery();
+  console.log("props", catalogs, isLoading, isError, error);
+
+  // decide what to render
+  let contentCatalogs = null;
+  if (isLoading) content = <h3>isLoading</h3>;
+
+  if (!isLoading && isError)
+    contentCatalogs = <div className="col-span-12">{error}</div>;
+
+  // if (!isLoading && !isError && !catalogs?.length < 0) {
+  //   contentCatalogs = <div className="col-span-12">No catalogs found!</div>;
+  // }
+
+  // if (!isLoading && !isError && catalogs?.length < 0) {
+  //   contentCatalogs = <Catalogs catalogs={catalogs} />;
+  // }
+
+  if (!isLoading && !isError) {
+    contentCatalogs = <Catalogs catalogs={catalogs} />;
+  }
+
   const promotionals = [
     {
       name: " Grab the season",
@@ -26,7 +48,7 @@ export default function Home() {
   ];
   return (
     <Layout>
-      <Catalogs />
+      {contentCatalogs}
       <Messages />
       <Promotionals promotionals={promotionals} />
       <CatagoryDisplays data="Men Catalog" title="Shop our range for him" />
@@ -38,10 +60,19 @@ export default function Home() {
 // catalogs collection on server side
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (contex) => {
-    await store.dispatch(getCatalogs.initiate());
+    const { data, isError, isLoading, error } = await store.dispatch(
+      getCatalogs.initiate()
+    );
+    console.log("server data", typeof data);
     //await Promise.all(getRunningOperationPromise());
+
     return {
-      props: {},
+      props: {
+        data,
+        isLoading,
+        isError,
+        ...(error && error),
+      },
     };
   }
 );

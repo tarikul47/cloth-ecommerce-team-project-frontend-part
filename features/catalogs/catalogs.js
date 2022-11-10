@@ -8,7 +8,7 @@ const catalogsApi = apiSlice.injectEndpoints({
   }),
 });
 //  export hooks for usage in functional components
-const { useGetCatalogsQuery } = catalogsApi;
+export const { useGetCatalogsQuery } = catalogsApi;
 
 // endpoints export
-const { getCatalogs } = catalogsApi.endpoints;
+export const { getCatalogs } = catalogsApi.endpoints;

@@ -6,6 +6,7 @@ import { HYDRATE } from "next-redux-wrapper";
 
 export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
+   // baseUrl: process.env.REACT_APP_DEV_API_URL,
     baseUrl: process.env.REACT_APP_DEV_API_URL,
   }),
   extractRehydrationInfo(action, { reducerPath }) {
@@ -17,7 +18,7 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     // get all products
     getProductList: builder.query({
-      query: () => `products/`,
+      query: () => `/products`,
     }),
     //get single product
     getProductById: builder.query({
@@ -33,4 +34,5 @@ export const {
   util: { getRunningOperationPromise },
 } = apiSlice;
 // export endpoints for use is ssr
-export const { getProductById, getProductList } = apiSlice.endpoints;
+export const { getProductById, getProductList } =
+  apiSlice.endpoints;
