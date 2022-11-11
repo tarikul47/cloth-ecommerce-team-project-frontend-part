@@ -7,10 +7,10 @@ import {
   getCatalogs,
   useGetCatalogsQuery,
 } from "../features/catalogs/catalogs";
-import { getProductList } from "../features/api/apiSlice";
 import { wrapper } from "../app/store";
 import { convert, prepareForSerializatoin } from "../utils/helper";
 import Error from "../components/Error";
+import { getProductList } from "../features/categories/categories";
 
 export default function Home({ data: catalogs, isLoading, isError, error }) {
   // catalogs collection
@@ -69,18 +69,29 @@ export default function Home({ data: catalogs, isLoading, isError, error }) {
 // catalogs collection on server side
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (contex) => {
-    const { data, isError, isLoading, error } = await store.dispatch(
-      getCatalogs.initiate()
-    );
-    console.log("server data - ", typeof data);
+    // Dispatch catalogs
+    const {
+      data: catalogs,
+      isError: catalogsIsError,
+      isLoading: catalogsIsLoading,
+      error: catalogsError,
+    } = await store.dispatch(getCatalogs.initiate());
+    // Dispatch products
+    const {
+      data: products,
+      isError: productIsError,
+      isLoading: productIsLoading,
+      error: productError,
+    } = await store.dispatch(getProductList.initiate());
+    console.log("server product data - ", products);
     //await Promise.all(getRunningOperationPromise());
 
     return {
       props: {
-        data: convert(data),
-        isLoading,
-        isError,
-        error: convert(error),
+        data: convert(catalogs),
+        catalogsIsLoading,
+        catalogsIsError,
+        error: convert(catalogsError),
       },
     };
   }

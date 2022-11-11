@@ -16,14 +16,7 @@ export const apiSlice = createApi({
   },
   tagTypes: [],
   endpoints: (builder) => ({
-    // get all products
-    getProductList: builder.query({
-      query: () => `/products`,
-    }),
-    //get single product
-    getProductById: builder.query({
-      query: (id) => `products/${id}`,
-    }),
+   
   }),
 });
 
