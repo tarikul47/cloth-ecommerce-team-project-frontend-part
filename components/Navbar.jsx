@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 const Navbar = () => {
   const router = useRouter();
-  console.log(router.route);
+ // console.log(router.route);
   return (
     <section>
       <nav x-data="{ isOpen: false }" className="relative bg-black">

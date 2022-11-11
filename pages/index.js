@@ -9,27 +9,30 @@ import {
 } from "../features/catalogs/catalogs";
 import { getProductList } from "../features/api/apiSlice";
 import { wrapper } from "../app/store";
+import { convert, prepareForSerializatoin } from "../utils/helper";
+import Error from "../components/Error";
 
 export default function Home({ data: catalogs, isLoading, isError, error }) {
   // catalogs collection
   //const { data } = useGetCatalogsQuery();
   //console.log("props", catalogs, isLoading, isError, error);
 
-  console.log("catalogs", catalogs);
+  //console.log("catalogs", Object.keys(catalogs).length > 0);
   console.log("isLoading", isLoading);
   console.log("isError", isError);
   console.log("error", error);
 
   // decide what to render
   let contentCatalogs = null;
-  if (isLoading) content = <h3>isLoading</h3>;
+  if (isLoading) contentCatalogs = <h3>isLoading</h3>;
 
-  if (!isLoading && isError)
-    contentCatalogs = <div className="col-span-12">{error}</div>;
+  if (!isLoading && isError) {
+    contentCatalogs = <Error status={error.status} />;
+  }
 
-  // if (!isLoading && !isError && !catalogs?.length < 0) {
-  //   contentCatalogs = <div className="col-span-12">No catalogs found!</div>;
-  // }
+  if (!isLoading && !isError && Object.keys(catalogs).length < 0) {
+    contentCatalogs = <div className="col-span-12">No catalogs found!</div>;
+  }
 
   // if (!isLoading && !isError && catalogs?.length < 0) {
   //   contentCatalogs = <Catalogs catalogs={catalogs} />;
@@ -39,6 +42,7 @@ export default function Home({ data: catalogs, isLoading, isError, error }) {
     contentCatalogs = <Catalogs catalogs={catalogs} />;
   }
 
+  console.log("contentCatalogs", contentCatalogs);
   const promotionals = [
     {
       name: " Grab the season",
@@ -68,15 +72,15 @@ export const getServerSideProps = wrapper.getServerSideProps(
     const { data, isError, isLoading, error } = await store.dispatch(
       getCatalogs.initiate()
     );
-    console.log("server data - ", typeof error);
+    console.log("server data - ", typeof data);
     //await Promise.all(getRunningOperationPromise());
 
     return {
       props: {
-        ...(data && data),
+        data: convert(data),
         isLoading,
         isError,
-        error,
+        error: convert(error),
       },
     };
   }

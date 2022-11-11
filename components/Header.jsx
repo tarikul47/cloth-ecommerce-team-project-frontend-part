@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 const Header = () => {
   const router = useRouter();
-  console.log(router.route);
+ // console.log(router.route);
   return (
     <header>
       <TopNavbar />

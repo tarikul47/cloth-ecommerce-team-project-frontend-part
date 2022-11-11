@@ -7,7 +7,7 @@ const Catalog = ({ catalog }) => {
     image: { data },
   } = catalog;
 
-  console.log("image--", data[0].attributes.url);
+  //console.log("image--", data[0].attributes.url);
 
   return (
     <a href={url} className="block">

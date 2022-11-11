@@ -1,7 +1,7 @@
 import Catalog from "./Catalog";
 
-const Catalogs = ({ catalogs: { data } }) => {
-  console.log("catalogs", data);
+const Catalogs = ({ catalogs: { data = [] } }) => {
+  //console.log("catalogs", data);
 
   return (
     <section className="container max-w-screen-xl my-10">
