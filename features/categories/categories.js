@@ -3,17 +3,18 @@ import { apiSlice } from "../api/apiSlice";
 const categoriesApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     // get all products
-    getProductList: builder.query({
-      query: () => `/products`,
+    getCategoryList: builder.query({
+      query: () => `/categories?populate=*`,
     }),
     //get single product
-    getProductById: builder.query({
-      query: (id) => `products/${id}`,
+    getCategoryById: builder.query({
+      query: (id) => `categories/${id}?populate=*`,
     }),
   }),
 });
 //  export hooks for usage in functional components
-export const { useGetProductListQuery, useGetProductByIdQuery } = categoriesApi;
+export const { useGetCategoryListQuery, useGetCategoryByIdQuery } =
+  categoriesApi;
 
 // endpoints export
-export const { getProductList, getProductById } = categoriesApi.endpoints;
+export const { getCategoryList, getCategoryById } = categoriesApi.endpoints;
