@@ -11,7 +11,8 @@ import { wrapper } from "../app/store";
 import { convert } from "../utils/helper";
 import { getCategoryList } from "../features/categories/categories";
 
-export default function Home({ catalogs, categories }) {
+export default function Home({ catalogs, categories = {} }) {
+  //console.log("catalogs error - ", catalogsError);
   // const {
   //   data: catalogsData,
   //   catalogsIsLoading,
@@ -20,7 +21,6 @@ export default function Home({ catalogs, categories }) {
   // } = catalogs;
   // // catalogs collection
   // //const { data } = useGetCatalogsQuery();
-  // console.log("props", catalogs);
 
   //console.log("catalogs", Object.keys(catalogs).length > 0);
   //console.log("isLoading", isLoading);
@@ -61,7 +61,7 @@ export default function Home({ catalogs, categories }) {
         categories={categories}
       />
       <CatagoryDisplays
-        data="Women Catalog"
+        attr="Women Catalog"
         title="Shop our range for her"
         categories={categories}
       />
@@ -80,13 +80,16 @@ export const getServerSideProps = wrapper.getServerSideProps(
       error: catalogsError,
     } = await store.dispatch(getCatalogs.initiate());
     // Dispatch products
+
     const {
       data: categories,
       isLoading: categoryIsLoading,
       isError: categoryIsError,
       error: categoryError,
     } = await store.dispatch(getCategoryList.initiate());
-    console.log("server product data - ", categories);
+
+    //console.log("catalogs data - ", catalogs);
+    console.log("categories data on server - ", categories);
     //await Promise.all(getRunningOperationPromise());
 
     return {
@@ -95,7 +98,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
           data: convert(catalogs),
           catalogsIsLoading,
           catalogsIsError,
-          error: convert(catalogsError),
+          catalogsError: convert(catalogsError),
         },
         categories: {
           data: convert(categories),

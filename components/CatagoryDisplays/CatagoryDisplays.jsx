@@ -1,8 +1,9 @@
+import Error from "../Error";
 import SectionTitle from "../SectionTitle";
 import CatagoryDisplay from "./CatagoryDisplay";
 
 const CatagoryDisplays = (props) => {
-  const { data, title, categories } = props;
+  const { attr, title, categories } = props;
 
   // const {
   //   data: catalogsData,
@@ -11,7 +12,7 @@ const CatagoryDisplays = (props) => {
   //   catalogsError,
   // } = catalogs;
 
-  console.log("props--", categories);
+  //console.log("props--", categories);
 
   const {
     data: categoriesData,
@@ -20,23 +21,23 @@ const CatagoryDisplays = (props) => {
     categoryError,
   } = categories;
 
-  console.log("categoriesData--", categoriesData);
+  //console.log("categoriesData--", categoryError.status);
 
   // // decide what to render
   let contentCategories = null;
-  if (categoryIsLoading) contentCategories = <h3>isLoading</h3>;
+  // if (categoryIsLoading) contentCategories = <h3>isLoading</h3>;
 
   if (!categoryIsLoading && categoryIsError) {
     contentCategories = <Error status={categoryError.status} />;
   }
 
-  if (
-    !categoryIsLoading &&
-    !categoryIsError &&
-    Object.keys(categoriesData).length < 0
-  ) {
-    contentCategories = <div className="col-span-12">No catalogs found!</div>;
-  }
+  // if (
+  //   !categoryIsLoading &&
+  //   !categoryIsError &&
+  //   Object.keys(categoriesData).length < 0
+  // ) {
+  //   contentCategories = <div className="col-span-12">No catalogs found!</div>;
+  // }
 
   if (!categoryIsLoading && !categoryIsError) {
     contentCategories = categoriesData.data?.map((category) => (
@@ -44,17 +45,17 @@ const CatagoryDisplays = (props) => {
     ));
   }
 
-  const image =
-    data == "Men Catalog"
-      ? "https://images.unsplash.com/photo-1459785704030-654f6c5934a7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1734&q=80"
-      : "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80";
   return (
     <section>
       <div className="container max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
         <SectionTitle title={title} />
-        <div className="grid sm:grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:items-stretch">
-          {contentCategories}
-        </div>
+        {categoryError ? (
+          contentCategories
+        ) : (
+          <div className="grid sm:grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:items-stretch">
+            {contentCategories}
+          </div>
+        )}
       </div>
     </section>
   );

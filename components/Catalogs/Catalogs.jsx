@@ -9,8 +9,6 @@ const Catalogs = ({ catalogs }) => {
     catalogsError,
   } = catalogs;
 
-  //console.log("catalogs--", catalogsData);
-
   // // decide what to render
   let contentCatalogs = null;
   if (catalogsIsLoading) contentCatalogs = <h3>isLoading</h3>;
@@ -35,9 +33,13 @@ const Catalogs = ({ catalogs }) => {
 
   return (
     <section className="container max-w-screen-xl my-10">
-      <div className="flex flex-wrap gap-2">
-        <div className="flex md:flex-row sm: flex-col">{contentCatalogs}</div>
-      </div>
+      {catalogsError ? (
+        contentCatalogs
+      ) : (
+        <div className="flex flex-wrap gap-2">
+          <div className="flex md:flex-row sm: flex-col">{contentCatalogs}</div>
+        </div>
+      )}
     </section>
   );
 };
