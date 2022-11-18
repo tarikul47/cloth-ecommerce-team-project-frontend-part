@@ -8,7 +8,7 @@ const CatagoryDisplay = ({ category }) => {
   } = category;
   return (
     <div className="">
-      <a href={url} className="block">
+      <a href={`/category/${name.toLowerCase()}`} className="block">
       <Image src={data[0].attributes.url} alt={name} width={400} height={300} />
         <h3 className="font-medium mt-2 font-roboto">{name}</h3>
       </a>

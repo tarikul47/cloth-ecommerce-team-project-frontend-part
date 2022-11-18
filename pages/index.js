@@ -6,10 +6,10 @@ import CatagoryDisplays from "../components/CatagoryDisplays/CatagoryDisplays";
 import {
   getCatalogs,
   useGetCatalogsQuery,
-} from "../features/catalogs/catalogs";
+} from "../features/catalog/catalog";
 import { wrapper } from "../app/store";
 import { convert } from "../utils/helper";
-import { getCategoryList } from "../features/categories/categories";
+import { getCategoryList } from "../features/category/category";
 
 export default function Home({ catalogs, categories = {} }) {
   //console.log("catalogs error - ", catalogsError);
@@ -56,7 +56,7 @@ export default function Home({ catalogs, categories = {} }) {
       <Messages />
       <Promotionals promotionals={promotionals} />
       <CatagoryDisplays
-        data="Men Catalog"
+        attr="Men Catalog"
         title="Shop our range for him"
         categories={categories}
       />
@@ -89,6 +89,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
     } = await store.dispatch(getCategoryList.initiate());
 
     //console.log("catalogs data - ", catalogs);
+    console.log("catalogs data on server - ", catalogs);
     console.log("categories data on server - ", categories);
     //await Promise.all(getRunningOperationPromise());
 

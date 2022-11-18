@@ -10,9 +10,14 @@ const Catalog = ({ catalog }) => {
   //console.log("image--", data[0].attributes.url);
 
   return (
-    <a href={url} className="block">
+    <a href={`/catalogs/${name.toLowerCase()}`} target="_blank" className="block">
       <div className="m-2">
-        <Image src={data[0].attributes.url} alt={name} width={400} height={300} />
+        <Image
+          src={data[0].attributes.url}
+          alt={name}
+          width={400}
+          height={300}
+        />
         <h3 className="m-auto bg-black p-2 text-white font-roboto text-2xl text-center">
           {name}
         </h3>

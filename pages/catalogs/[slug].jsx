@@ -1,16 +1,14 @@
 import React from "react";
+import { wrapper } from "../../app/store";
 import CatagoryDisplays from "../../components/CatagoryDisplays/CatagoryDisplays";
 import Layout from "../../components/Layout";
 import Promotionals from "../../components/Promotionals/Promotionals";
-import {
-  getCatalogs,
-  useGetCatalogsQuery,
-} from "../../features/catalogs/catalogs";
+import { getCategoryList } from "../../features/category/category";
+import { convert } from "../../utils/helper";
 
-const CatalogSlug = () => {
+const CatalogSlug = ({ categories }) => {
   // catalogs collection
-  const { data } = useGetCatalogsQuery();
-  console.log(data);
+
   const promotionals = [
     {
       name: " Grab the season",
@@ -26,12 +24,50 @@ const CatalogSlug = () => {
   return (
     <Layout>
       <Promotionals promotionals={promotionals} />
-      <CatagoryDisplays data="Men Catalog" title="Men's catagories" />
-      <CatagoryDisplays data="Men Catalog" title="Featured Products" />
-      <CatagoryDisplays data="Men Catalog" title="New Arival" />
+      <CatagoryDisplays
+        attr="Men Catalog"
+        title="Men's catagories"
+        categories={categories}
+      />
+      <CatagoryDisplays
+        attr="Men Catalog"
+        title="Featured Products"
+        categories={categories}
+      />
+      <CatagoryDisplays
+        attr="Men Catalog"
+        title="New Arival"
+        categories={categories}
+      />
     </Layout>
   );
 };
 
 export default CatalogSlug;
 
+// catalogs collection on server side
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (contex) => {
+    // Dispatch catalogs
+    const {
+      data: categories,
+      isLoading: categoryIsLoading,
+      isError: categoryIsError,
+      error: categoryError,
+    } = await store.dispatch(getCategoryList.initiate());
+
+    console.log("categories data on server - ", categories);
+    //await Promise.all(getRunningOperationPromise());
+
+    return {
+      props: {
+        categories: {
+          data: convert(categories),
+          categoryIsLoading,
+          categoryIsError,
+          categoryError: convert(categoryError),
+        },
+      },
+    };
+  }
+);
